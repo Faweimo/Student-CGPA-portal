@@ -1,0 +1,34 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}
+Student Portal | Administration 
+
+
+
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">
+    <b>
+        Student Portal
+    </b>
+</a></h1>
+{% endblock %}
+
+{% block extrastyle %}
+ <!-- Bootstrap -->
+ <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+ <!-- Custom -->
+ <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+ <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+
+{% endblock %}
+
+
+
+{% block nav-global %}{% endblock %}
+
+{% block footer %}
+
+
+{% endblock %}

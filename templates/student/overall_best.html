@@ -1,0 +1,38 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+
+{% block content %}
+  
+
+
+  <section class="about">
+    <div class="main">
+        <img src="{% static 'img/team3.jpeg' %}">
+        
+        <div class="about-text">
+            <h1>Best Graduating Student class'22</h1>
+            <h5>Department of computer science</h5>
+            <p>
+                Among the first class degree holders were Sabi boy, who emerged as the best graduating student in the College of Natural and Applied science (CONAS) and the department 
+                of Computer science with a 4.93 Cummulative Grade Point Average (CGPA), student who emerged as the best overall graduating student with a
+                 perfect 5.0 CGPA. Read more: https://www.legit.ng/1249900-meet-2-graduating-students-wesley-university.html
+
+            </p>
+            <button type="button">Let's Talk</button>
+            {% for x in cgpa %}
+                {{ x }}
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+  </section>
+
+ 
+ {% endblock content %}
+    
+ {% block scripts %}
+      <script src="assets/js/jquery-3.3.1.min.js "></script>
+      <script src="assets/js/bootstrap.bundle.min.js "></script>
+      <script src="assets/js/main.js "></script>
+ {% endblock scripts %}     

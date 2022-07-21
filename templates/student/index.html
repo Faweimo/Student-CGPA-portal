@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>CGPA</title>
+ 
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <!-- Custom -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+  <!-- <link rel="stylesheet" href="{% static '_styles.css' %}"> -->
+  
+</head>
+
+<body>
+  <!-- Top Bar -->
+  <section id="top-bar" class="p-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <i class="fas fa-phone"></i> (+234) 7063389041
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-envelope-open"></i> contact@wesleyuniversity
+        </div>
+        <div class="col-md-4">
+          <div class="social text-right">
+            <a href="#">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-pinterest"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/img/logo.png" class="logo" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav">
+          <li class="nav-item active mr-3">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="#"></a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="#"></a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="#">
+              <i class="fas fa-user-plus"></i></a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="#">
+              <i class="fas fa-sign-in-alt"></i>
+
+             About </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ <!-- Showcase -->
+ <section id="showcase">
+    <div class="container text-center">
+      <div class="home-search p-5">
+        <div class="overlay p-5">
+          <h1 class="display-4 mb-4">
+            CGPA CALCULATOR
+          </h1>
+          <p class="lead">Calculate Student Total Score</p>
+          <div class="search">
+            <form action="search.html">
+              <!-- Form Row 1 -->
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label class="sr-only">Name of Student</label>
+                  <input type="text" name="keywords" class="form-control" placeholder="Name of student">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label class="sr-only">Matric No</label>
+                  <input type="text" name="city" class="form-control" placeholder="Matric No">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label class="sr-only">State</label>
+                  <select name="state" class="form-control">
+                    <option selected="true" disabled="disabled">courses (All)</option>
+                    <option value="ACC">ACCOUNTING</option>
+                    <option value="BCH">BIOCHEMISTRY</option>
+                    <option value="POL">POLITICAL SCIENCE</option>
+                    <option value="BUS">BUSINESS ADMIN</option>
+                    <option value="MASS">MASSCOMMUNICATION</option>
+                    <option value="NUD">NUTRITION AND DIETETICS</option>
+                    <option value="FST">FOOD SCIENCE AND TECHNOLOGY</option>
+                    <option value="AGR">AGRICULTURAL</option>
+                    <option value="EC">ECONOMICS</option>
+                    <option value="EM">ESTATE MANAGEMENT</option>
+                    <option value="MB">MICRO BIOLOGY</option>
+                    <option value="CS">COMPUTER SCIENCE</option>
+                    <option value="PY">PHYSICS</option>
+                    <option value="MA">MATHEMATICS</option>
+                    <option value="TH">THEOLOGY</option>
+                    <option value="HMT">HOSPITALITY MANAGEMENT AND TERORISM</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Form Row 2 -->
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label class="sr-only">Bedrooms</label>
+                  <select name="bedrooms" class="form-control">
+                    <option selected="true" disabled="disabled">College (All)</option>
+                    <option value="1">CONAS</option>
+                    <option value="2">CAFST</option>
+                    <option value="3">CEDM</option>
+                    <option value="4">CSMS</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <select name="price" class="form-control" id="type">
+                    <option selected="true" disabled="disabled">Level (Any)</option>
+                    <option value="100000">100Level</option>
+                    <option value="200000">200Level</option>
+                    <option value="300000">300Level</option>
+                    <option value="400000">400Level</option>
+                    <option value="500000">500Level</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+     <!-- Footer -->
+  <footer id="main-footer" class="py-4 bg-primary text-white text-center">
+    Copyright &copy;
+    <span class="year"></span> CGPA
+  </footer>
+    </div>
+  </section>
+
+  {% for x in studentcourse  %}
+      
+    {% for x in result  %}
+      {% for x in course %}
+          {{ x.course_name }}
+      {% endfor %}
+      
+    {% endfor %}
+  {% endfor %}
+
+
+
+  <script src="assets/js/jquery-3.3.1.min.js "></script>
+  <script src="assets/js/bootstrap.bundle.min.js "></script>
+  <script src="assets/js/main.js "></script>
+</body>
+
+</html>

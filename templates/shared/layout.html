@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | {% block title %}
+      
+    {% endblock title %}</title>
+     
+    <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <!-- Custom -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+  <!-- <link rel="stylesheet" href="{% static '_styles.css' %}"> -->
+    <!-- STATIC CSS  -->
+    {% block static %}
+      
+    {% endblock static %}
+
+</head>
+<body>
+    {% include "partials/_topbar.html" %}
+    {% include "partials/_navbar.html" %}
+    {% block content %}
+      
+    {% endblock content %}
+
+    
+  <!-- Footer -->
+  <footer id="main-footer" class="py-4 bg-primary text-white text-center">
+    Copyright &copy;
+    <span class="year"></span> CGPA
+  </footer>
+  
+
+    {% block scripts %}
+      
+    {% endblock scripts %}
+</body>
+</html>

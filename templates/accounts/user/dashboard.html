@@ -1,0 +1,114 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+
+{% block title %}
+  {{user.first_name}}
+{% endblock title %}
+  {% block static %}
+ <!-- Bootstrap -->
+ <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+ <!-- Custom -->
+ <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+ <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+  {% endblock static %}
+ 
+{% block content %}
+  
+<section id="showcase-inner" class="py-5 text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4">{{user.first_name}} {{user.last_name}}</h1>
+        <p class="lead">{{user.matric_no}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">
+            <i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="breadcrumb-item active"> Dashboard</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<section id="dashboard" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Welcome {{ user.first_name }}</h2>
+        
+        <p>All level course</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">courses</th>
+                    <th scope="col">course code</th>
+                    <th scope="col">unit</th>
+                    <th>scores</th>
+                    <th scope="col">grade</th>
+                    <th scope="col">points</th>
+                    <th scope="col">unit points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for x in studentcourse  %}
+                     {% for x in result %}
+                     <tr>
+                       {% if x.course in course %}
+                       
+                      <td>{{ x.course.course_name }}</td>
+                      <td>{{ x.course.course_code }}</td>
+                      <td>{{ x.course.credit_unit }}</td>
+                      <td>
+                        <a class="btn btn-light" href="#">{{ x.score }}</a>
+                      </td>
+                      <td>{{ x.grade }}</td>
+                      <td>{{ x.points }}</td>
+                      <td>{{ x.unit_points }}</td>
+                    </tr>
+                    <tr>
+                     
+                      {% else %}
+                    </tr>
+                    <p>No courses</p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </tbody>
+              </table>
+
+            
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Your Cummulative Grade Point</h2>
+        <p>For {{user.first_name}} in  {{ profile.department.name }} is {{ cgpa.cgpa }}</p>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="assets/js/jquery-3.3.1.min.js "></script>
+<script src="assets/js/bootstrap.bundle.min.js "></script>
+<script src="assets/js/main.js "></script>
+{% endblock scripts %}
+
+ 

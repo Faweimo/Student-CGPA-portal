@@ -1,0 +1,28 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+{% block title %}| Login {% endblock %}
+{% block content %}
+
+<form action="{% url 'login' %}" method="POST"> 
+    {% csrf_token %}
+    <!-- {{ form.email.errors }}
+    <label class="form-label">{{ form.email.label}}</label>
+    {{ form.email}} -->
+       
+    <!-- {{ form.matric_no.errors }}
+    <label class="form-label">{{ form.matric_no.label}}</label>
+    {{ form.matric_no}}
+    
+    {{ form.password.errors }}
+    <label class="form-label">{{ form.password.label}}</label>
+    {{ form.password}} -->
+{{ form }}
+    
+      {{ form.non_field_errors }}
+    <div class="d-grid gap-2">
+        <input type="hidden" name="next" value="{{ next }}">
+        <button class="btn btn-primary py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">Sign in
+        </button>    
+</form>
+
+{% endblock content %}
