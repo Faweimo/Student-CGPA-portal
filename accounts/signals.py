@@ -16,15 +16,3 @@ def create_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User) 
 def save_profile(sender, instance, **kwargs):
         instance.profile.save()
-        
-# @receiver(post_save, sender=Course) 
-# def create_result(sender, instance, created,*args, **kwargs):
-#     if created:
-#         # course = Course.objects.create()
-#         Result.objects.create(course=instance)
-#         instance.save()
-
-
-# @receiver(post_save, sender=Course) 
-# def save_result(sender, instance, **kwargs):
-#         instance.result.save()

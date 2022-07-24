@@ -25,6 +25,7 @@ def get_total_unit_points(self):
 @login_required(login_url='login')
 def dashboard(request):
     user = User.objects.get(id=request.user.id)
+   
     if not user:
         return HttpResponse('Log in to your dashboard')
     else:    
@@ -33,9 +34,10 @@ def dashboard(request):
         course = Course.objects.filter(profile=profile).filter(leave_and_semester__id__in=level).order_by('-leave_and_semester')
         result = Result.objects.filter(course__id__in=course).order_by('-course')
         studentcourse = StudentCourse.objects.filter(result__id__in=result).all().distinct()
-        cgpa = CGPA.objects.get(student_course__in=studentcourse)
-        if not cgpa:
-            return HttpResponse('User has no CGPA')
+       
+        cgpa = CGPA.objects.filter(profile=profile)
+        for x in cgpa:
+            print(x.cgpa)   
         context = {
             'result':result,
             'course':course,

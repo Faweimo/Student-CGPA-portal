@@ -1,3 +1,4 @@
+from unittest import result
 from django.db.models.signals import post_save, pre_delete,pre_save
 from django.dispatch import receiver
 
@@ -21,16 +22,10 @@ def create_cgpa(sender, instance,created,*args,**kwargs):
         instance.save()
 
 
-# when profile is created, create instance of the CGPA  
-@receiver(post_save, sender=Result)
-def create_cgpa(sender, instance,created,*args,**kwargs):
-    if created:
-        StudentCourse.objects.create(result=instance)
-        instance.save()
-
-
+# if profile is created, create an instance of studentcourse
 @receiver(post_save, sender=Profile)
 def create_cgpa(sender, instance,created,*args,**kwargs):
     if created:
-        StudentCourse.objects.create(profile=instance)
+        studentcourse = StudentCourse.objects.create(profile=instance)
+        CGPA(profile=instance,student_course=studentcourse)
         instance.save()

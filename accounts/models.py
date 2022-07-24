@@ -4,7 +4,7 @@ from accounts.utils import  matric_no
 from django.core.validators import RegexValidator
 
 class MyAccountManager(BaseUserManager):
-    def create_user(self, first_name, last_name, username,phone_number,matric_no, email, password=None):
+    def create_user(self, first_name, last_name, username,phone_number, email, password=None):
         if not email:
             raise ValueError('User must have an email address')
 
@@ -17,14 +17,14 @@ class MyAccountManager(BaseUserManager):
             first_name = first_name,
             last_name = last_name,
             phone_number=phone_number,
-            matric_no=matric_no
+            # matric_no=matric_no
         )
         user.is_active = True
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, first_name, last_name, phone_number,email, username,matric_no, password):
+    def create_superuser(self, first_name, last_name, phone_number,email, username, password):
         user = self.create_user(
             email = self.normalize_email(email),
             username = username,
@@ -32,8 +32,9 @@ class MyAccountManager(BaseUserManager):
             first_name = first_name,
             last_name = last_name,
             phone_number=phone_number,
-            matric_no=matric_no
+            # matric_no=matric_no
         )
+        # user.matric_no = matric_no
         user.is_admin = True
         user.is_active = True
         user.is_staff = True
@@ -49,7 +50,7 @@ class User(AbstractBaseUser):
     last_name       = models.CharField(max_length=50)
     username        = models.CharField(max_length=50, unique=True)
     email           = models.EmailField(max_length=100, unique=True)
-    phone_number    = models.CharField(max_length=50,validators=[phone_validator],unique=True)
+    phone_number    = models.CharField(max_length=50,validators=[phone_validator])
     matric_no = models.CharField(default=matric_no(),max_length=50,unique=True)
     
     # required

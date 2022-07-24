@@ -76,7 +76,7 @@ class Course(models.Model):
     )
  
     def __str__(self):
-        return f' {self.course_name} - {self.course_code} credits:- {self.credit_unit}'
+        return f'{self.profile} || {self.course_name} - {self.course_code}'
 
     class Meta:
         
@@ -163,20 +163,25 @@ class StudentCourse(models.Model):
 
 # CGPA model 
 class CGPA(models.Model):
+    profile = models.OneToOneField(
+        Profile,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
     student_course = models.OneToOneField(
         StudentCourse,
         on_delete=models.CASCADE,
         blank=True,
         null=True
     ) 
-    total_credit_units = models.PositiveIntegerField(
-        default=0
-        )
-    total_unit_points = models.PositiveIntegerField(
-        default=0
-        )
-    cgpa = models.CharField(
-        max_length=3,
+    total_credit_units = models.IntegerField(default=0,blank=True,null=True)
+        
+    total_unit_points = models.IntegerField(default=0,blank=True,null=True)
+        
+    cgpa = models.DecimalField(
+        decimal_places=2,
+        max_digits=3,
         default=0
     )
 
@@ -184,23 +189,27 @@ class CGPA(models.Model):
         return f'{self.student_course}'
 
     def save(self,*args,**kwargs):
-        self.total_credit_units
+
         # get the overall unit point of each student relating to their department and courses taken /
         profile = Profile.objects.get(user=self.student_course.profile.user)
         course = Course.objects.filter(profile=profile)
         r = Result.objects.filter(course__id__in=course).aggregate(Sum('unit_points'))['unit_points__sum']
         
         # get the total unit points field and save the sum of unit * points of the result
-        self.total_unit_points = r
+        self.total_unit_points=r
 
         # get the overall credit unit of each student relating to their department and courses taken /
         c = Course.objects.filter(profile=profile).aggregate(Sum('credit_unit'))['credit_unit__sum']
 
         # get the total credit units field and save the sum of the credit unit of the course
-        self.total_credit_units = c
+        self.total_credit_units=c
 
-        self.cgpa = self.total_unit_points / self.total_credit_units
+        if self.total_credit_units and self.total_unit_points:
 
+            self.cgpa=self.total_unit_points/self.total_credit_units
+            
+            d = round(float(self.cgpa),2)
+        
         super(CGPA,self).save(*args,**kwargs)
         
    

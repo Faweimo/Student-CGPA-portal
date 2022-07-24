@@ -60,7 +60,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {% for x in studentcourse  %}
+                  {% for x in studentcourse %}
                      {% for x in result %}
                      <tr>
                        {% if x.course in course %}
@@ -71,9 +71,9 @@
                       <td>
                         <a class="btn btn-light" href="#">{{ x.score }}</a>
                       </td>
-                      <td>{{ x.grade }}</td>
-                      <td>{{ x.points }}</td>
-                      <td>{{ x.unit_points }}</td>
+                    <td>{{ x.grade }}</td>
+                    <td>{{ x.points }}</td>
+                    <td>{{ x.unit_points }}</td>
                     </tr>
                     <tr>
                      
@@ -98,7 +98,19 @@
     <div class="row">
       <div class="col-md-12">
         <h2>Your Cummulative Grade Point</h2>
-        <p>For {{user.first_name}} in  {{ profile.department.name }} is {{ cgpa.cgpa }}</p>
+        <p>For {{user.first_name}} in  {{ profile.department.name }} is
+          {% if cgpa %}
+            {% for x in cgpa %}
+            {{ x.cgpa }}
+            
+            {% endfor %}
+          {% else %}  
+          <p>
+            NO CGPA
+          </p>
+          {% endif %}
+          
+          </p>
     </div>
   </div>
 </section>
